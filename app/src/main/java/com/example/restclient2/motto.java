@@ -12,10 +12,13 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashSet;
 
 public class motto extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,27 +30,25 @@ public class motto extends AppCompatActivity {
 
         TextView motto_dnia = (TextView) findViewById(R.id.textView);
 
+        String url = "http://192.168.1.2:8080/Restfull/rest/motto";
+
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://192.168.1.44:8080/Restfull/rest/motto";
-
-
+// 2. Utworzenie żądania
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
-                    public void onResponse(String Response) {
-
-                        motto_dnia.setText(Response);
-
+                    public void onResponse(String response) {
+                       motto_dnia.setText(response);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                motto_dnia.setText("nie udało się");
-
             }
         });
 
+        // 3. Dodanie żądania na kolejkę.
         queue.add(stringRequest);
-    }
+
+}
 }
