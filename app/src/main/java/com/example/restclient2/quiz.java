@@ -1,9 +1,7 @@
 package com.example.restclient2;
 
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.android.volley.Request;
@@ -15,6 +13,10 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 public class quiz extends AppCompatActivity {
 
@@ -63,6 +65,8 @@ public class quiz extends AppCompatActivity {
         LinearLayout layout = (LinearLayout) findViewById(R.id.layaut);
 
         JSONArray array = (JSONArray)jsonObject.get("pytania");
+        List<RadioGroup> answers_list  = new ArrayList<RadioGroup>();
+        String[] poprawna = new String[array.length()];
 
 
 
@@ -92,6 +96,7 @@ public class quiz extends AppCompatActivity {
             ansC.setText((String) pytanie.get("odp_c"));
             ansD.setText((String) pytanie.get("odp_d"));
 
+            poprawna[i]= (String) pytanie.get("poprawna");
 
 
             answers.addView(ansA);
@@ -100,10 +105,39 @@ public class quiz extends AppCompatActivity {
             answers.addView(ansD);
 
             layout.addView(answers);
+            answers_list.add(answers);
 
-            
+
 
 
         }
+
+        Button check = new Button(this);
+        check.setText("Sprawdź odpowiedzi");
+        TextView wynik = new TextView(this);
+
+        layout.addView(check);
+
+        check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int score =0;
+                int i=0;
+                String odp;
+                for (RadioGroup answer: answers_list
+                ) {
+
+                    i++;
+
+
+                }
+
+                check.setText(String.valueOf(i));
+
+
+            }
+        });
+
+
     }
 }
