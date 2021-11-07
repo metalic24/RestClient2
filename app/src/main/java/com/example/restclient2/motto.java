@@ -30,7 +30,7 @@ public class motto extends AppCompatActivity {
 
         TextView motto_dnia = (TextView) findViewById(R.id.textView);
 
-        String url = "http://192.168.1.2:8080/Restfull/rest/motto";
+        String url = "http://192.168.1.44:8080/Restfull/rest/motto";
 
         RequestQueue queue = Volley.newRequestQueue(this);
 // 2. Utworzenie żądania

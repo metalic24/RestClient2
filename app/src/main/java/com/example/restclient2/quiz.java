@@ -30,7 +30,7 @@ public class quiz extends AppCompatActivity {
 
 
 
-        String url = "http://192.168.1.2:8080/Restfull/rest/quiz";
+        String url = "http://192.168.1.44:8080/Restfull/rest/quiz";
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
@@ -96,6 +96,11 @@ public class quiz extends AppCompatActivity {
             ansC.setText((String) pytanie.get("odp_c"));
             ansD.setText((String) pytanie.get("odp_d"));
 
+            ansA.setId((int) 1);
+            ansB.setId((int) 2);
+            ansC.setId((int) 3);
+            ansD.setId((int) 4);
+
             poprawna[i]= (String) pytanie.get("poprawna");
 
 
@@ -116,23 +121,55 @@ public class quiz extends AppCompatActivity {
         check.setText("Sprawdź odpowiedzi");
         TextView wynik = new TextView(this);
 
-        layout.addView(check);
 
+        layout.addView(check);
+        
         check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int score =0;
                 int i=0;
-                String odp;
+                String odp = null;
                 for (RadioGroup answer: answers_list
                 ) {
+                    
 
-                    i++;
+                    int r = (int) answer.getCheckedRadioButtonId();
+
+                    switch (r)
+                    {
+                        case 1:
+                            odp="a";
+                            break;
+                        case 2:
+                            odp="b";
+                            break;
+                        case 3:
+                            odp="c";
+                            break;
+                        case 4:
+                            odp="d";
+
+                            break;
+                        default:
+                            odp="";
+                            break;
+                    }
+
+
+
+                    if(odp.equals(poprawna[i]))
+                    {
+                        score++;
+                    }
+                   i++;
 
 
                 }
 
-                check.setText(String.valueOf(i));
+                check.setText(String.valueOf(score));
+
+               
 
 
             }
