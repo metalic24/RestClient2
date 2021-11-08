@@ -10,10 +10,17 @@
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:usesCleartextTraffic="true"
-            android:theme="@style/Theme.RestClient2">
-        <activity android:name=".quiz"
-                  android:parentActivityName=".MainActivity">
+            android:theme="@style/Theme.RestClient2"
+            android:usesCleartextTraffic="true">
+        <activity android:name=".Wyniki"
+                  android:parentActivityName=".quiz"
+
+        >
+
+        </activity>
+        <activity
+                android:name=".quiz"
+                android:parentActivityName=".MainActivity">
         </activity>
         <activity
                 android:name=".motto"

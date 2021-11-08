@@ -1,5 +1,6 @@
 package com.example.restclient2;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
@@ -167,9 +168,13 @@ public class quiz extends AppCompatActivity {
 
                 }
 
-                check.setText(String.valueOf(score));
 
-               
+                Intent intent = new Intent(quiz.this, Wyniki.class);
+                intent.putExtra("score",String.valueOf(score));
+                intent.putExtra("max_score",String.valueOf(i));
+                startActivity(intent);
+
+
 
 
             }
