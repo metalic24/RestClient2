@@ -13,7 +13,7 @@
             android:theme="@style/Theme.RestClient2"
             android:usesCleartextTraffic="true">
         <activity android:name=".Wyniki"
-                  android:parentActivityName=".quiz"
+                  android:parentActivityName=".MainActivity"
 
         >
 

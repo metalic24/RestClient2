@@ -26,15 +26,18 @@ public class quiz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
+        //dodanie opcji cofania
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
-
+        //trzeba zmienić adres ip na adres serwera lokalnego
         String url = "http://192.168.1.44:8080/Restfull/rest/quiz";
 
+        //utworzenie kolejki
         RequestQueue queue = Volley.newRequestQueue(this);
 
+        //utworzenie rządania
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
 
@@ -55,7 +58,8 @@ public class quiz extends AppCompatActivity {
             }
         });
 
-        // 3. Dodanie żądania na kolejkę.
+
+        //dodanie rządania do kolejki
         queue.add(jsonObjectRequest);
 
 
@@ -70,6 +74,7 @@ public class quiz extends AppCompatActivity {
         String[] poprawna = new String[array.length()];
 
 
+        //odczytanie danych z obj json i wyświetlenie ich
 
         for(int i=0; i<array.length(); i++)
         {
@@ -124,7 +129,8 @@ public class quiz extends AppCompatActivity {
 
 
         layout.addView(check);
-        
+
+        //sprawdzenie odpowiedzi i wysłanie wyniku
         check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -168,6 +174,7 @@ public class quiz extends AppCompatActivity {
 
                 }
 
+                //otwarcie nowej aktywności i wysłanie jej danych
 
                 Intent intent = new Intent(quiz.this, Wyniki.class);
                 intent.putExtra("score",String.valueOf(score));

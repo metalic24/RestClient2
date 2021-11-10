@@ -13,9 +13,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //swtorzenie przycisków
         Button btn = (Button) findViewById(R.id.button);
         Button btn2 = (Button) findViewById(R.id.button2);
 
+        //otwarcie klasy motto
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //otwarcie klsy qiuz
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
